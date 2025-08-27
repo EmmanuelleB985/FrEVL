@@ -29,15 +29,15 @@ Download and prepare the datasets:
 
 ```bash
 # Download all datasets
-python prepare_datasets.py --dataset all --data-dir ./data
+python download_datasets.py --dataset all --data-dir ./data
 
 # Or download specific dataset
-python prepare_datasets.py --dataset coco --data-dir ./data
-python prepare_datasets.py --dataset vqa --data-dir ./data
-python prepare_datasets.py --dataset snli-ve --data-dir ./data
+python download_datasets.py --dataset coco --data-dir ./data
+python download_datasets.py --dataset vqa --data-dir ./data
+python download_datasets.py --dataset snli-ve --data-dir ./data
 
 # Optional: Pre-compute embeddings for faster training
-python prepare_datasets.py --dataset all --cache-embeddings
+python download_datasets.py --dataset all --cache-embeddings
 ```
 
 **Note**: SNLI-VE requires manual download of Flickr30k images from [here](https://shannon.cs.illinois.edu/DenotationGraph/).
@@ -48,7 +48,7 @@ python prepare_datasets.py --dataset all --cache-embeddings
 
 ```bash
 # Train FrEVL on VQA v2
-python train.py
+python train.py --dataset vqa --data-root ./data
 ```
 
 ## Evaluation
@@ -64,9 +64,9 @@ python evaluate.py --checkpoint checkpoints/best_model.pth
 FrEVL/
 ├── train.py                 # Main training script
 ├── evaluate.py             # Evaluation script
-├── prepare_datasets.py     # Dataset download and preparation
+├── download_datasets.py     # Dataset download and preparation
 ├── configs/               # Configuration files
-├── checkpoints_regularized/  # Saved model checkpoints
+├── checkpoints/  # Saved model checkpoints
 ├── logs/                   # Training logs
 └── data/                    # Dataset directory
     ├── coco/
